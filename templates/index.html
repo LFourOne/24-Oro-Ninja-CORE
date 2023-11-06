@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for("static", filename="style.css")}}">
+    <title>Oro Ninja</title>
+</head>
+<body>
+    <section class="container">
+        <div class="top-subcontainer">
+            <div class="yourgold"> <p> Your Gold: </p> </div>
+            <div class="gold-amount"> <span> {{session.total_amount}} </span> </div>
+        </div>
+        <div class="middle-subcontainer">
+            <div class="activities-frames">
+                <h3> Farm </h3>
+                <div> <p> (earns 10-20 golds) </p> </div>
+                <div class="submit-container">
+                    <form action="/process_money" method="POST">
+                        <input type="hidden" name="building" value="farm">
+                        <input class="btn" type="submit" value="Find Gold!">
+                    </form>
+                </div>
+            </div>
+            <div class="activities-frames">
+                <h3> Cave </h3>
+                <div> <p> (earns 5-10 golds) </p> </div>
+                <div class="submit-container">
+                    <form action="/process_money" method="POST">
+                        <input type="hidden" name="building" value="cave">
+                        <input class="btn" type="submit" value="Find Gold!">
+                    </form>
+                </div>
+            </div>
+            <div class="activities-frames">
+                <h3> House </h3>
+                <div> <p> (earns 2-5 golds) </p> </div>
+                <div class="submit-container">
+                    <form action="/process_money" method="POST">
+                        <input type="hidden" name="building" value="house">
+                        <input class="btn" type="submit" value="Find Gold!">
+                    </form>
+                </div>
+            </div>
+            <div class="activities-frames">
+                <h3> Casino </h3>
+                <div> <p> (earns/takes 0-50 golds) </p> </div>
+                <div class="submit-container">
+                    <form action="/process_money" method="POST">
+                        <input type="hidden" name="building" value="casino">
+                        <input class="btn" type="submit" value="Find Gold!">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-subcontainer">
+            <div class="console-subcontainer">
+                <p class="console-title"> Activities: </p>
+                <div> 
+                    <textarea class="textarea" readonly> 
+                    {% for activity in activities %} 
+                        {{ activity }}
+                    {% endfor %}
+                    </textarea>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
